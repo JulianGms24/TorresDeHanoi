@@ -54,5 +54,40 @@ public class TorresdeHanoi {
             moverDiscos(n - 1, auxiliar, destino, origen);
         }
     }
+    // Método para mover un disco de un poste a otro
+    public static void moverDisco(char origen, char destino) {
+        int disco;
+
+        // Sacar el disco del poste origen
+        if (origen == 'A') {
+            disco = posteA.pop();
+        } else if (origen == 'B') {
+            disco = posteB.pop();
+        } else {
+            disco = posteC.pop();
+        }
+
+        // Colocar el disco en el poste destino
+        if (destino == 'A') {
+            posteA.push(disco);
+        } else if (destino == 'B') {
+            posteB.push(disco);
+        } else {
+            posteC.push(disco);
+        }
+
+        // Mostrar el movimiento y el estado actual de los postes
+        System.out.println("Mover disco de tamaño " + disco + " de " + origen + " a " + destino);
+        visualizarPostes();
+    }
+
+    // Método para visualizar el estado actual de los postes
+    public static void visualizarPostes() {
+        System.out.println("Estado de los postes:");
+        System.out.println("  Poste A: " + posteA);
+        System.out.println("  Poste B: " + posteB);
+        System.out.println("  Poste C: " + posteC);
+        System.out.println("-----------------------------");
+    }
 
 }
