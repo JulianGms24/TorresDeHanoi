@@ -38,4 +38,21 @@ public class TorresdeHanoi {
         // Cerrar el scanner para liberar recursos
         scanner.close();
     }
+    // Método recursivo para mover discos
+    public static void moverDiscos(int n, char origen, char destino, char auxiliar) {
+        if (n == 1) {
+            // Mover el disco directamente al destino
+            moverDisco(origen, destino);
+        } else {
+            // Mover n-1 discos del origen al auxiliar, usando el destino como apoyo
+            moverDiscos(n - 1, origen, auxiliar, destino);
+
+            // Mover el disco más grande (n) del origen al destino
+            moverDisco(origen, destino);
+
+            // Mover los n-1 discos del auxiliar al destino, usando el origen como apoyo
+            moverDiscos(n - 1, auxiliar, destino, origen);
+        }
+    }
+
 }
